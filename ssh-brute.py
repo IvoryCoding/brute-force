@@ -1,3 +1,11 @@
+#   Date:        2022/04/04
+#   Author:      Emma Gillespie
+#   Description: Cracks the ssh password using a dictionary
+#   Resources:   https://docs.python.org/3/library/ftplib.html
+#                
+
+#!/usr/bin/python3
+
 import socket
 import time
 import argparse
